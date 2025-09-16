@@ -1,98 +1,97 @@
-📋 Employee Management API
+# 📋 Employee Management API
 
-A modern RESTful API for managing employee data built with FastAPI and MongoDB. This project shows CRUD operations, advanced searching, and real-world API practices.
+A modern RESTful API for managing employee data built with **FastAPI** and **MongoDB**.  
+This project shows **CRUD operations**, advanced searching, and real-world API practices.
 
-🌟 Features
+---
 
-✅ Full CRUD Operations – Create, Read, Update, Delete employees
+## 🌟 Features
 
-✅ Advanced Filtering – Search by department, skills, and more
+- ✅ Full CRUD Operations – Create, Read, Update, Delete employees  
+- ✅ Advanced Filtering – Search by department, skills, and more  
+- ✅ Data Analytics – Average salary calculations by department  
+- ✅ Real-time Documentation – Interactive Swagger UI  
+- ✅ Database Indexing – Optimized MongoDB performance  
+- ✅ Error Handling – Proper error management  
+- ✅ Async Operations – Non-blocking database calls  
 
-✅ Data Analytics – Average salary calculations by department
+---
 
-✅ Real-time Documentation – Interactive Swagger UI
+## 🛠️ Tech Stack
 
-✅ Database Indexing – Optimized MongoDB performance
+- **Framework:** FastAPI (Python)  
+- **Database:** MongoDB  
+- **Async Driver:** Motor  
+- **Validation:** Pydantic  
+- **API Documentation:** Swagger UI  
 
-✅ Error Handling – Proper error management
+---
 
-✅ Async Operations – Non-blocking database calls
+## 📦 Installation
 
-🛠️ Tech Stack
+### Prerequisites
+- Python **3.8+**  
+- MongoDB installed and running  
+- pip (Python package manager)  
 
-Framework: FastAPI (Python)
+### Setup Steps
 
-Database: MongoDB
+1. Clone and navigate to the project:
+   ```bash
+   cd mongo-employee-api
+   ```
 
-Async Driver: Motor
+2. Create a virtual environment:
+   ```bash
+   python -m venv venv
+   source venv/bin/activate   # Linux/Mac
+   venv\Scripts\activate      # Windows
+   ```
 
-Validation: Pydantic
+3. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-API Documentation: Swagger UI
+4. Start MongoDB:
+   ```bash
+   sudo systemctl start mongod                 # Linux
+   brew services start mongodb-community       # Mac
+   ```
 
-📦 Installation
-Prerequisites
+5. Run the application:
+   ```bash
+   uvicorn app.main:app --reload
+   ```
 
-Python 3.8+
+6. Access the API:
+   - API: [http://localhost:8000](http://localhost:8000)  
+   - Docs: [http://localhost:8000/docs](http://localhost:8000/docs)  
+   - Health: [http://localhost:8000/health](http://localhost:8000/health)  
 
-MongoDB installed and running
+---
 
-pip (Python package manager)
+## 🚀 API Endpoints
 
-Setup Steps
+| Method | Endpoint                    | Description                     |
+|--------|-----------------------------|---------------------------------|
+| GET    | `/`                         | Welcome message                 |
+| GET    | `/health`                   | API health status               |
+| POST   | `/employees/`               | Create new employee             |
+| GET    | `/employees/`               | List all employees              |
+| GET    | `/employees/{employee_id}`  | Get specific employee           |
+| PUT    | `/employees/{employee_id}`  | Update employee                 |
+| DELETE | `/employees/{employee_id}`  | Delete employee                 |
+| GET    | `/employees/avg-salary`     | Average salary by department    |
+| GET    | `/employees/search`         | Search employees by skill       |
 
-Clone and navigate to the project:
+---
 
-cd mongo-employee-api
+## 📝 Usage Examples
 
-
-Create a virtual environment:
-
-python -m venv venv
-source venv/bin/activate   # Linux/Mac
-venv\Scripts\activate      # Windows
-
-
-Install dependencies:
-
-pip install -r requirements.txt
-
-
-Start MongoDB:
-
-sudo systemctl start mongod                 # Linux
-brew services start mongodb-community       # Mac
-
-
-Run the application:
-
-uvicorn app.main:app --reload
-
-
-Access the API:
-
-API: http://localhost:8000
-
-Documentation: http://localhost:8000/docs
-
-Health Check: http://localhost:8000/health
-
-🚀 API Endpoints
-Method	Endpoint	Description
-GET	/	Welcome message
-GET	/health	API health status
-POST	/employees/	Create new employee
-GET	/employees/	List all employees
-GET	/employees/{employee_id}	Get specific employee
-PUT	/employees/{employee_id}	Update employee
-DELETE	/employees/{employee_id}	Delete employee
-GET	/employees/avg-salary	Average salary by department
-GET	/employees/search	Search employees by skill
-📝 Usage Examples
-Create an Employee
-curl -X POST "http://localhost:8000/employees/" \
-  -H "Content-Type: application/json" \
-  -d '{
+### Create an Employee
+```bash
+curl -X POST "http://localhost:8000/employees/"   -H "Content-Type: application/json"   -d '{
     "employee_id": "E001",
     "name": "John Doe",
     "department": "Engineering",
@@ -100,17 +99,28 @@ curl -X POST "http://localhost:8000/employees/" \
     "joining_date": "2023-01-15",
     "skills": ["Python", "MongoDB"]
   }'
+```
 
-Get All Employees
+### Get All Employees
+```bash
 curl http://localhost:8000/employees/
+```
 
-Get Average Salary by Department
+### Get Average Salary by Department
+```bash
 curl http://localhost:8000/employees/avg-salary
+```
 
-Search Employees by Skill
+### Search Employees by Skill
+```bash
 curl "http://localhost:8000/employees/search?skill=Python"
+```
 
-🗃️ Database Schema
+---
+
+## 🗃️ Database Schema
+
+```json
 {
   "employee_id": "string (unique)",
   "name": "string",
@@ -119,8 +129,13 @@ curl "http://localhost:8000/employees/search?skill=Python"
   "joining_date": "ISODate",
   "skills": ["array", "of", "strings"]
 }
+```
 
-📊 Project Structure
+---
+
+## 📊 Project Structure
+
+```text
 mongo-employee-api/
 ├── app/
 │   ├── main.py          # FastAPI application setup
@@ -131,97 +146,93 @@ mongo-employee-api/
 │       └── employees.py # API endpoints
 ├── requirements.txt     # Dependencies
 └── README.md            # Documentation
+```
 
-🧪 Testing
+---
 
-Visit http://localhost:8000/docs
+## 🧪 Testing
 
-Click on any endpoint
+1. Visit [http://localhost:8000/docs](http://localhost:8000/docs)  
+2. Click on any endpoint  
+3. Click **Try it out**  
+4. Enter required parameters  
+5. Click **Execute**  
 
-Click Try it out
+---
 
-Enter required parameters
+## 🔧 Configuration
 
-Click Execute
+Optional environment variable (`.env` file):
 
-🔧 Configuration
-
-Set environment variables (optional) in a .env file:
-
+```bash
 MONGODB_URL=mongodb://localhost:27018
+```
 
-🐛 Troubleshooting
+---
 
-MongoDB not running
+## 🐛 Troubleshooting
 
-sudo systemctl start mongod
+- **MongoDB not running**  
+  ```bash
+  sudo systemctl start mongod
+  ```
+
+- **Port already in use**  
+  ```bash
+  lsof -ti:8000 | xargs kill
+  ```
+
+- **Dependencies issues**  
+  ```bash
+  pip install -r requirements.txt --upgrade
+  ```
+
+- **Database connection failed**  
+  - Check if MongoDB is installed and running  
+  - Verify connection string in `database.py`  
+
+---
+
+## 📈 Performance Features
+
+- Async Database Operations – Non-blocking MongoDB queries  
+- Indexed Fields – Faster searches on employee_id, department, skills  
+- Connection Pooling – Efficient database connections  
+- Input Validation – Prevents invalid data from reaching database  
+
+---
+
+## 🤝 Contributing
+
+1. Fork the repository  
+2. Create a feature branch:
+   ```bash
+   git checkout -b feature-name
+   ```
+3. Commit changes:
+   ```bash
+   git commit -m 'Add feature'
+   ```
+4. Push to branch:
+   ```bash
+   git push origin feature-name
+   ```
+5. Submit a pull request  
 
 
-Port already in use
+---
 
-lsof -ti:8000 | xargs kill
+## 🎯 Learning Outcomes
 
+This project demonstrates:  
+- RESTful API design  
+- MongoDB database integration  
+- Async/await programming in Python  
+- Pydantic data validation  
+- API documentation with Swagger  
+- Error handling and status codes  
+- Database indexing and optimization  
 
-Dependencies issues
+---
 
-pip install -r requirements.txt --upgrade
-
-
-Database connection failed
-
-Check if MongoDB is installed and running
-
-Verify connection string in database.py
-
-📈 Performance Features
-
-Async Database Operations – Non-blocking MongoDB queries
-
-Indexed Fields – Faster searches on employee_id, department, skills
-
-Connection Pooling – Efficient database connections
-
-Input Validation – Prevents invalid data from reaching database
-
-🤝 Contributing
-
-Fork the repository
-
-Create a feature branch:
-
-git checkout -b feature-name
-
-
-Commit changes:
-
-git commit -m 'Add feature'
-
-
-Push to branch:
-
-git push origin feature-name
-
-
-Submit a pull request
-
-📄 License
-
-This project is open source and available under the MIT License.
-
-🎯 Learning Outcomes
-
-This project demonstrates:
-
-RESTful API design
-
-MongoDB database integration
-
-Async/await programming in Python
-
-Pydantic data validation
-
-API documentation with Swagger
-
-Error handling and status codes
-
-Database indexing and optimization
+🚀 **Happy Coding!**
