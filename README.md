@@ -38,7 +38,7 @@ This project shows **CRUD operations**, advanced searching, and real-world API p
 
 1. Clone and navigate to the project:
    ```bash
-   cd mongo-employee-api
+   cd Employee_API
    ```
 
 2. Create a virtual environment:
@@ -136,7 +136,7 @@ curl "http://localhost:8000/employees/search?skill=Python"
 ## 📊 Project Structure
 
 ```text
-mongo-employee-api/
+Employee_API/
 ├── app/
 │   ├── main.py          # FastAPI application setup
 │   ├── database.py      # MongoDB connection
